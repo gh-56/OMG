@@ -8,7 +8,7 @@ function Home() {
   return (
     <div>
       <h1>영화 맞추기 게임!</h1>
-      <input type='text' />
+      <input type='text' placeholder='정답을 입력해주세요' />
       <button>제출</button>
       <p>{count ? count : <div>카운트 다운 종료</div>}</p>
     </div>
