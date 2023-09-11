@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Movie from './component/Movie';
+import Movie from './Movie';
 import ResCompare from './ResCompare';
 
 function Home() {
