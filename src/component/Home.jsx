@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Movie from './component/Movie';
+import ResCompare from './ResCompare';
 
 function Home() {
   const [count, setCount] = useState(5);
@@ -11,6 +13,8 @@ function Home() {
       <input type='text' placeholder='정답을 입력해주세요' />
       <button>제출</button>
       <p>{count ? count : <div>카운트 다운 종료</div>}</p>
+      <Movie />
+      <ResCompare />
     </div>
   );
 }
