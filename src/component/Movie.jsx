@@ -8,7 +8,6 @@ function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
-  const [actorImg, setActorImg] = useState(null);
 
   const getMovie = async () => {
     setLoading(true);
@@ -29,17 +28,10 @@ function Movie() {
     const idx = 3;
     setMovies(response.results[idx]);
     setPosterImg(response2.images);
-    const url_actorImg = `https://api.themoviedb.org/3/person/popular?${api}`;
-    const response3 = await (await fetch(url_posterImg)).json();
-    fetch(url_actorImg)
-      .then((res) => res.json())
-      .then((json) => console.log(json));
-    setActorImg(response3.results);
     setLoading(false);
   };
   useEffect(() => {
     getMovie();
-    setPosterImg();
   }, []);
   // console.log(movies);
   return (
@@ -53,9 +45,8 @@ function Movie() {
             title={movies.title}
             overview={movies.overview}
           ></Hint30>
-          {actorImg.map((id) => (
-            <Hint15 id={id.known_for.id}></Hint15>
-          ))}
+          <Hint15></Hint15>
+
           <Hint3
             poster_path={movies.poster_path}
             img={posterImg.base_url}
