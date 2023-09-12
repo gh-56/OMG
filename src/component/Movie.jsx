@@ -8,6 +8,7 @@ function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
+  const [count, setCount] = useState(10);
 
   const getMovie = async () => {
     setLoading(true);
@@ -15,17 +16,17 @@ function Movie() {
       '&page=1&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc';
     const api = 'api_key=f5217a0db9120b09b842b37fe18c9685';
     const url = `https://api.themoviedb.org/3/discover/movie?${api}${queryString}`;
-    const url_posterImg = `https://api.themoviedb.org/3/configuration?${api}`;
+    const url_posterPath = `https://api.themoviedb.org/3/configuration?${api}`;
 
     const response = await (await fetch(url)).json();
-    const response2 = await (await fetch(url_posterImg)).json();
+    const response2 = await (await fetch(url_posterPath)).json();
     fetch(url)
       .then((res) => res.json())
       .then((json) => console.log(json));
-    fetch(url_posterImg)
+    fetch(url_posterPath)
       .then((res) => res.json())
       .then((json) => console.log(json));
-    const idx = 3;
+    const idx = 1;
     setMovies(response.results[idx]);
     setPosterImg(response2.images);
     setLoading(false);
@@ -33,7 +34,11 @@ function Movie() {
   useEffect(() => {
     getMovie();
   }, []);
-  // console.log(movies);
+
+  useEffect(() => {
+    count > 0 && setTimeout(() => setCount(count - 1), 1000);
+  }, [count]);
+  console.log(count);
   return (
     <div>
       {loading ? (
@@ -46,11 +51,10 @@ function Movie() {
             overview={movies.overview}
           ></Hint30>
           <Hint15></Hint15>
-
           <Hint3
-            poster_path={movies.poster_path}
             img={posterImg.base_url}
             img_size={posterImg.poster_sizes[2]}
+            poster_path={movies.poster_path}
           ></Hint3>
         </div>
       )}
