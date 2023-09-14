@@ -46,13 +46,10 @@ function Movie() {
     getMovie();
   }, []);
 
-  // useEffect(() => {
-  //   count > 0 && setTimeout(() => setCount(count - 1), 1000);
-  //   if (count === 5) {
-  //     setTime();
-  //   }
-  // }, [count]);
-  // console.log(count);
+  useEffect(() => {
+    count > 0 && setTimeout(() => setCount(count - 1), 1000);
+  }, [count]);
+  console.log(count);
   return (
     <div>
       {loading ? (
@@ -64,8 +61,11 @@ function Movie() {
             title={movies.title}
             overview={movies.overview}
           ></Hint30>
-          <Hint15 name={keyword.name}></Hint15>
+
+          <Hint15 count={count} name={keyword.name}></Hint15>
+
           <Hint3
+            count={count}
             img={posterImg.base_url}
             img_size={posterImg.poster_sizes[2]}
             poster_path={movies.poster_path}
