@@ -2,12 +2,14 @@ import React from 'react';
 import Hint30 from './Hint30';
 import Hint15 from './Hint15';
 import Hint3 from './Hint3';
+import ResCompare from './ResCompare';
+
 import { useState, useEffect } from 'react';
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(0);
   const [keyword, setKeyword] = useState(0);
   const getMovie = async () => {
     setLoading(true);
@@ -41,7 +43,7 @@ function Movie() {
         continue;
       } else {
         setMovies(response.results[idx]);
-        setKeyword(response3.keywords[0]);
+        setKeyword(response3.keywords);
         setLoading(false);
         break;
       }
@@ -60,12 +62,18 @@ function Movie() {
         <div>로딩중입니다.</div>
       ) : (
         <div>
+          <ResCompare title={movies.title} />
           <Hint30
             key={movies.id}
             title={movies.title}
             overview={movies.overview}
           ></Hint30>
-          <Hint15 count={count} name={keyword.name}></Hint15>
+          <div>
+            <h3>두 번째 힌트</h3>
+            {keyword.map((keywords) => (
+              <Hint15 Hint15 count={count} name={keywords.name}></Hint15>
+            ))}
+          </div>
           <Hint3
             count={count}
             img={posterImg.base_url}
