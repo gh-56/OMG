@@ -28,7 +28,7 @@ function Movie() {
       .then((res) => res.json())
       .then((json) => console.log(json));
 
-    const idx = 0;
+    const idx = 5;
     setMovies(response.results[idx]);
     setPosterImg(response2.images);
 
@@ -64,7 +64,7 @@ function Movie() {
             title={movies.title}
             overview={movies.overview}
           ></Hint30>
-          <Hint15 keyword={keyword.name}></Hint15>
+          <Hint15 name={keyword.name}></Hint15>
           <Hint3
             img={posterImg.base_url}
             img_size={posterImg.poster_sizes[2]}
