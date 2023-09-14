@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { movieContext } from './Movie';
 
-function QuizResult(props) {
+function QuizResult() {
+  const { movies } = useContext(movieContext);
   return (
     <div>
-      {props.answer
+      {movies.answer
         ? '정답입니다.'
-        : `오답입니다. 정답은 ${props.title}입니다.`}
+        : `오답입니다. 정답은 ${movies.title}입니다.`}
     </div>
   );
 }
