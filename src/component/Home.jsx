@@ -5,6 +5,7 @@ function Home() {
     <div>
       <h1>영화 맞추기 게임!</h1>
       <Movie />
+      {/* <QuizResult /> */}
     </div>
   );
 }
