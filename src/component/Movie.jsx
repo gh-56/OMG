@@ -4,12 +4,13 @@ import Hint15 from './Hint15';
 import Hint3 from './Hint3';
 import ResCompare from './ResCompare';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
+export const movieContext = createContext();
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10);
   const [keyword, setKeyword] = useState(0);
   const getMovie = async () => {
     setLoading(true);
@@ -52,40 +53,26 @@ function Movie() {
   useEffect(() => {
     getMovie();
   }, []);
+
+  // 카운트 다운 구현
   useEffect(() => {
     count > 0 && setTimeout(() => setCount(count - 1), 1000);
   }, [count]);
   console.log(count);
   return (
     <div>
-      {loading ? (
-        <div>로딩중입니다.</div>
-      ) : (
-        <div>
-          <ResCompare title={movies.title} />
-          <Hint30
-            key={movies.id}
-            title={movies.title}
-            overview={movies.overview}
-          ></Hint30>
+      <movieContext.Provider value={{ movies, keyword, posterImg, count }}>
+        {loading ? (
+          <div>로딩중입니다.</div>
+        ) : (
           <div>
-            <h3>두 번째 힌트</h3>
-            {keyword.map((keywords) => (
-              <Hint15
-                key={keywords.id}
-                count={count}
-                name={keywords.name}
-              ></Hint15>
-            ))}
+            <ResCompare />
+            <Hint30 />
+            <Hint15 />
+            <Hint3 />
           </div>
-          <Hint3
-            count={count}
-            img={posterImg.base_url}
-            img_size={posterImg.poster_sizes[2]}
-            poster_path={movies.poster_path}
-          ></Hint3>
-        </div>
-      )}
+        )}
+      </movieContext.Provider>
     </div>
   );
 }

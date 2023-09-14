@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { movieContext } from './Movie';
 
-function Hint3(props) {
-  const img_url = `${props.img}${props.img_size}${props.poster_path}`;
+function Hint3() {
+  const { movies, posterImg, count } = useContext(movieContext);
+
+  const img_url = `${posterImg.base_url}${posterImg.poster_sizes[2]}${movies.poster_path}`;
   return (
     <div>
-      {props.count <= 3 ? (
+      {count <= 3 ? (
         <div>
           <h3>세 번째 힌트</h3>
           <img src={img_url} alt='' />
