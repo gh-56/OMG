@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 import Movie from './Movie';
-import ResCompare from './ResCompare';
+// import ResCompare from './ResCompare';
 
 function Home() {
   return (
@@ -10,7 +10,7 @@ function Home() {
       <button>제출</button>
       {/* <p>{count ? count : <div>카운트 다운 종료</div>}</p> */}
       <Movie />
-      <ResCompare />
+      {/* <ResCompare /> */}
     </div>
   );
 }
