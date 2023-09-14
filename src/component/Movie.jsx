@@ -71,7 +71,11 @@ function Movie() {
           <div>
             <h3>두 번째 힌트</h3>
             {keyword.map((keywords) => (
-              <Hint15 Hint15 count={count} name={keywords.name}></Hint15>
+              <Hint15
+                key={keywords.id}
+                count={count}
+                name={keywords.name}
+              ></Hint15>
             ))}
           </div>
           <Hint3
