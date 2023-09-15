@@ -1,10 +1,11 @@
 import './App.css';
-import Home from './component/Home';
+import Movie from './component/Movie';
 
 function App() {
   return (
     <div className='App'>
-      <Home />
+      <h1>영화 맞추기 게임!</h1>
+      <Movie />
     </div>
   );
 }

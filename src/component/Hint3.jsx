@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { movieContext } from './Movie';
+import './Hint3.css';
 
 function Hint3() {
   const { movies, posterImg, count } = useContext(movieContext);
@@ -8,7 +9,7 @@ function Hint3() {
   return (
     <div>
       {count <= 3 ? (
-        <div>
+        <div id='div'>
           <h3>세 번째 힌트</h3>
           <img src={img_url} alt='' />
         </div>

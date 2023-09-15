@@ -1,21 +1,20 @@
 import React from 'react';
-import Hint30 from './Hint30';
-import Hint15 from './Hint15';
-import Hint3 from './Hint3';
+import Home from './Home';
 import ResCompare from './ResCompare';
-
 import { useState, useEffect, createContext } from 'react';
+
 export const movieContext = createContext();
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(0);
   const [keyword, setKeyword] = useState(0);
+
   const getMovie = async () => {
     setLoading(true);
     const queryString =
-      '&page=1&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc';
+      '&page=10&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc';
     const api = '?api_key=f5217a0db9120b09b842b37fe18c9685';
     const url = `https://api.themoviedb.org/3/discover/movie${api}${queryString}`;
     const url_posterPath = `https://api.themoviedb.org/3/configuration${api}`;
@@ -42,12 +41,11 @@ function Movie() {
         response3.keywords.length === 0
       ) {
         continue;
-      } else {
-        setMovies(response.results[idx]);
-        setKeyword(response3.keywords);
-        setLoading(false);
-        break;
       }
+      setMovies(response.results[idx]);
+      setKeyword(response3.keywords);
+      setLoading(false);
+      break;
     }
   };
   useEffect(() => {
@@ -67,9 +65,7 @@ function Movie() {
         ) : (
           <div>
             <ResCompare />
-            <Hint30 />
-            <Hint15 />
-            <Hint3 />
+            <Home />
           </div>
         )}
       </movieContext.Provider>
