@@ -1,16 +1,18 @@
 import React from 'react';
-import Hint30 from './Hint30';
-import Hint15 from './Hint15';
-import Hint3 from './Hint3';
+import Home from './Home';
 import ResCompare from './ResCompare';
+import { useState, useEffect, createContext } from 'react';
 
-import { useState, useEffect } from 'react';
+export const movieContext = createContext();
 function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
   const [count, setCount] = useState(0);
   const [keyword, setKeyword] = useState(0);
+  const [gameCount, setGameCount] = useState(0);
+  // let duplicatedIdx = [];
+
   const getMovie = async () => {
     setLoading(true);
     const queryString =
@@ -41,51 +43,57 @@ function Movie() {
         response3.keywords.length === 0
       ) {
         continue;
-      } else {
-        setMovies(response.results[idx]);
-        setKeyword(response3.keywords);
-        setLoading(false);
-        break;
       }
+      // for (let i; duplicatedIdx.length; i++) {
+      //   if (duplicatedIdx[i] === idx) {
+      //     continue;
+      //   }
+      // }
+      //duplicatedIdx.push(idx);
+      setMovies(response.results[idx]);
+      setKeyword(response3.keywords);
+      setGameCount((gameCount) => gameCount + 1);
+      setLoading(false);
+      break;
     }
   };
   useEffect(() => {
     getMovie();
   }, []);
+
+  // 카운트 다운 구현
   useEffect(() => {
     count > 0 && setTimeout(() => setCount(count - 1), 1000);
   }, [count]);
   console.log(count);
   return (
     <div>
-      {loading ? (
-        <div>로딩중입니다.</div>
-      ) : (
-        <div>
-          <ResCompare title={movies.title} />
-          <Hint30
-            key={movies.id}
-            title={movies.title}
-            overview={movies.overview}
-          ></Hint30>
+      <movieContext.Provider
+        value={{
+          movies,
+          keyword,
+          posterImg,
+          count,
+          getMovie,
+          gameCount,
+          setGameCount,
+        }}
+      >
+        {loading ? (
+          <div>로딩중입니다.</div>
+        ) : (
           <div>
-            <h3>두 번째 힌트</h3>
-            {keyword.map((keywords) => (
-              <Hint15
-                key={keywords.id}
-                count={count}
-                name={keywords.name}
-              ></Hint15>
-            ))}
+            {gameCount === 3 ? (
+              <ResCompare />
+            ) : (
+              <div>
+                <ResCompare />
+                <Home />
+              </div>
+            )}
           </div>
-          <Hint3
-            count={count}
-            img={posterImg.base_url}
-            img_size={posterImg.poster_sizes[2]}
-            poster_path={movies.poster_path}
-          ></Hint3>
-        </div>
-      )}
+        )}
+      </movieContext.Provider>
     </div>
   );
 }
