@@ -11,11 +11,12 @@ function Movie() {
   const [count, setCount] = useState(0);
   const [keyword, setKeyword] = useState(0);
   const [gameCount, setGameCount] = useState(0);
+  // let duplicatedIdx = [];
 
   const getMovie = async () => {
     setLoading(true);
     const queryString =
-      '&page=3&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc';
+      '&page=1&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc';
     const api = '?api_key=f5217a0db9120b09b842b37fe18c9685';
     const url = `https://api.themoviedb.org/3/discover/movie${api}${queryString}`;
     const url_posterPath = `https://api.themoviedb.org/3/configuration${api}`;
@@ -43,10 +44,16 @@ function Movie() {
       ) {
         continue;
       }
+      // for (let i; duplicatedIdx.length; i++) {
+      //   if (duplicatedIdx[i] === idx) {
+      //     continue;
+      //   }
+      // }
+      //duplicatedIdx.push(idx);
       setMovies(response.results[idx]);
       setKeyword(response3.keywords);
-      setLoading(false);
       setGameCount((gameCount) => gameCount + 1);
+      setLoading(false);
       break;
     }
   };
