@@ -10,6 +10,7 @@ function Movie() {
   const [posterImg, setPosterImg] = useState(null);
   const [count, setCount] = useState(0);
   const [keyword, setKeyword] = useState(0);
+  const [gameCount, setGameCount] = useState(0);
 
   const getMovie = async () => {
     setLoading(true);
@@ -45,6 +46,7 @@ function Movie() {
       setMovies(response.results[idx]);
       setKeyword(response3.keywords);
       setLoading(false);
+      setGameCount((gameCount) => gameCount + 1);
       break;
     }
   };
@@ -59,7 +61,9 @@ function Movie() {
   console.log(count);
   return (
     <div>
-      <movieContext.Provider value={{ movies, keyword, posterImg, count }}>
+      <movieContext.Provider
+        value={{ movies, keyword, posterImg, count, getMovie, gameCount }}
+      >
         {loading ? (
           <div>로딩중입니다.</div>
         ) : (

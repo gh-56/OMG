@@ -4,7 +4,7 @@ import { movieContext } from './Movie';
 import './ResCompare.css';
 
 function ResCompare() {
-  const { movies } = useContext(movieContext);
+  const { movies, gameCount } = useContext(movieContext);
   const [inputText, setInputText] = useState('');
   const [answer, setAnswer] = useState(false);
   const [isTrue, setIsTrue] = useState(false);
@@ -18,8 +18,9 @@ function ResCompare() {
     if (inputText.replace(/(\s*)/g, '') === title.replace(/(\s*)/g, '')) {
       setAnswer(true);
       console.log('정답');
+    } else {
+      console.log('오답');
     }
-    console.log('오답');
   };
   console.log(inputText);
   return (
@@ -32,6 +33,7 @@ function ResCompare() {
       <button onClick={onClickHandler}>제출</button>
       <div>
         {isTrue ? <QuizResult answer={answer} title={movies.title} /> : ''}
+        <div>{gameCount}</div>
       </div>
     </div>
   );
