@@ -12,9 +12,10 @@ function ResCompare() {
   const onChangeHandler = (event) => {
     setInputText(event.target.value);
   };
+  var title = movies.title;
   const onClickHandler = () => {
     setIsTrue(true);
-    if (inputText === movies.title) {
+    if (inputText.replace(/(\s*)/g, '') === title.replace(/(\s*)/g, '')) {
       setAnswer(true);
       console.log('정답');
     }
