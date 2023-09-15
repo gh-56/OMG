@@ -76,8 +76,14 @@ function Movie() {
           <div>로딩중입니다.</div>
         ) : (
           <div>
-            <ResCompare />
-            <Home />
+            {gameCount === 3 ? (
+              <ResCompare />
+            ) : (
+              <div>
+                <ResCompare />
+                <Home />
+              </div>
+            )}
           </div>
         )}
       </movieContext.Provider>

@@ -33,7 +33,7 @@ function ResCompare() {
       />
       <button onClick={onClickHandler}>제출</button>
       {gameCount === 3 ? (
-        <GameScore />
+        <GameScore answer={answer} />
       ) : isTrue ? (
         <QuizResult answer={answer} title={movies.title} />
       ) : (
