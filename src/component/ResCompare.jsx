@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
-import QuizResult from './QuizResult';
 import { movieContext } from './Movie';
 import './ResCompare.css';
+import QuizResult from './QuizResult';
+import GameScore from './GameScore';
 
 function ResCompare() {
   const { movies, gameCount } = useContext(movieContext);
@@ -31,10 +32,15 @@ function ResCompare() {
         placeholder='정답을 입력해주세요'
       />
       <button onClick={onClickHandler}>제출</button>
-      <div>
-        {isTrue ? <QuizResult answer={answer} title={movies.title} /> : ''}
-        <div>{gameCount}</div>
-      </div>
+      {gameCount === 3 ? (
+        <GameScore />
+      ) : isTrue ? (
+        <QuizResult answer={answer} title={movies.title} />
+      ) : (
+        ''
+      )}
+
+      {movies.title}
     </div>
   );
 }
