@@ -15,6 +15,7 @@ function Movie(props) {
   const [gameCount, setGameCount] = useState(0);
   const [isTrue, setIsTrue] = useState(false);
   const [answer, setAnswer] = useState(false);
+  let timeOutID = null;
   // let duplicatedIdx = [];
 
   const getMovie = async () => {
@@ -65,12 +66,22 @@ function Movie(props) {
   }, []);
 
   // 카운트 다운 구현
+
   useEffect(() => {
-    count > 0 && setTimeout(() => setCount(count - 1), 1000);
+    if (count > 0) {
+      timeOutID = setTimeout(() => {
+        setCount(count - 1);
+      }, 1000);
+    }
   }, [count]);
-  console.log(count);
-  console.log('props.gc' + props.gc);
-  console.log('gameCount' + gameCount);
+  const clickHandler = () => {
+    clearTimeout(timeOutID); // 주석처리하면 동일한 이슈 발생
+    setCount(0);
+  };
+
+  console.log('타이머 = ' + count);
+  // console.log('props.gc = ' + props.gc);
+  // console.log('게임 횟수 = ' + gameCount);
   return (
     <div>
       <movieContext.Provider
@@ -87,6 +98,7 @@ function Movie(props) {
           setIsTrue,
           answer,
           setAnswer,
+          clickHandler,
         }}
       >
         {loading ? (
@@ -94,7 +106,7 @@ function Movie(props) {
         ) : (
           <div>
             <ResCompare />
-            {gameCount === Number(props.gc) ? (
+            {gameCount === Number(props.gc) && answer ? (
               <div>
                 <GameScore answer={answer} />
               </div>

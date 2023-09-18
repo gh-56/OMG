@@ -20,20 +20,26 @@ function App() {
         <Movie gc={gc} />
       ) : (
         <div>
-          <div>게임 설명 </div>
+          <div className='gameDescription'>게임 설명 </div>
           <ol>
             <li>맞출 문제의 개수를 정해줍니다.</li>{' '}
             <li>문제마다 힌트가 제공됩니다.</li>
             <li>30초안에 문제를 못 맞출 시 오답이 되고 다시 시작합니다.</li>
           </ol>
-          <div>난이도를 선택해주세요.</div>
-          <select onChange={onChangeHandler}>
-            <option value={3}>쉬움</option>
-            <option value={5}>보통</option>
-            <option value={7}>어려움</option>
-            <option value={10}>매우어려움</option>
-          </select>
-          <button onClick={onClickHandler}>게임 시작하기</button>
+          <div className='selectLevel'>
+            난이도를 선택해주세요.
+            <select onChange={onChangeHandler}>
+              <option value={3}>쉬움</option>
+              <option value={5}>보통</option>
+              <option value={7}>어려움</option>
+              <option value={10}>매우어려움</option>
+            </select>
+          </div>
+          <div>
+            <button className='startButton' onClick={onClickHandler}>
+              게임 시작하기
+            </button>
+          </div>
         </div>
       )}
     </div>
