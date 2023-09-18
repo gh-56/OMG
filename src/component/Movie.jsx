@@ -2,6 +2,8 @@ import React from 'react';
 import Home from './Home';
 import ResCompare from './ResCompare';
 import { useState, useEffect, createContext } from 'react';
+import QuizResult from './QuizResult';
+import GameScore from './GameScore';
 
 export const movieContext = createContext();
 function Movie() {
@@ -11,12 +13,14 @@ function Movie() {
   const [count, setCount] = useState(10);
   const [keyword, setKeyword] = useState(0);
   const [gameCount, setGameCount] = useState(0);
+  const [isTrue, setIsTrue] = useState(false);
+  const [answer, setAnswer] = useState(false);
   // let duplicatedIdx = [];
 
   const getMovie = async () => {
     setLoading(true);
-    const queryString =
-      '&page=1&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc';
+    const rand = Math.floor(Math.random() * 10) + 1;
+    const queryString = `&page=${rand}&include_adult=false&include_video=false&language=ko-KR&sort_by=popularity.desc`;
     const api = '?api_key=f5217a0db9120b09b842b37fe18c9685';
     const url = `https://api.themoviedb.org/3/discover/movie${api}${queryString}`;
     const url_posterPath = `https://api.themoviedb.org/3/configuration${api}`;
@@ -78,24 +82,40 @@ function Movie() {
           gameCount,
           setGameCount,
           setCount,
+          isTrue,
+          setIsTrue,
+          answer,
+          setAnswer,
         }}
       >
         {loading ? (
           <div>로딩중입니다.</div>
         ) : (
           <div>
-            {gameCount === 3 ? (
-              <ResCompare />
+            <ResCompare />
+            {gameCount === 7 ? (
+              <div>
+                <GameScore answer={answer} />
+              </div>
             ) : (
               <div>
                 <div>
                   {count === 0 ? (
-                    <ResCompare />
+                    <div>
+                      <QuizResult answer={answer} title={movies.title} />
+                    </div>
                   ) : (
                     <div>
-                      <ResCompare />
-                      {count}
-                      <Home />
+                      {isTrue ? (
+                        setCount(0) && (
+                          <QuizResult answer={answer} title={movies.title} />
+                        )
+                      ) : (
+                        <div>
+                          {count}
+                          <Home />
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>

@@ -1,14 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { movieContext } from './Movie';
 import './ResCompare.css';
-import QuizResult from './QuizResult';
-import GameScore from './GameScore';
 
 function ResCompare() {
-  const { movies, gameCount } = useContext(movieContext);
+  const { movies, setIsTrue, setAnswer } = useContext(movieContext);
   const [inputText, setInputText] = useState('');
-  const [answer, setAnswer] = useState(false);
-  const [isTrue, setIsTrue] = useState(false);
 
   const onChangeHandler = (event) => {
     setInputText(event.target.value);
@@ -23,7 +19,6 @@ function ResCompare() {
       console.log('오답');
     }
   };
-  console.log(inputText);
   return (
     <div className='ResCompare'>
       <input
@@ -32,13 +27,6 @@ function ResCompare() {
         placeholder='정답을 입력해주세요'
       />
       <button onClick={onClickHandler}>제출</button>
-      {gameCount === 3 ? (
-        <GameScore answer={answer} />
-      ) : isTrue ? (
-        <QuizResult answer={answer} title={movies.title} />
-      ) : (
-        ''
-      )}
       <div>{movies.title}</div>
     </div>
   );
