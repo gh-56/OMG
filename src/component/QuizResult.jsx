@@ -7,14 +7,14 @@ function QuizResult(props) {
     getMovie,
     gameCount,
     setGameCount,
-    setCount,
     setAnswer,
     setIsTrue,
+    setCount,
   } = useContext(movieContext);
   const img_url = `${posterImg.base_url}${posterImg.poster_sizes[2]}${movies.poster_path}`;
   const onClickHandler = () => {
-    setGameCount(0);
     setCount(10);
+    setGameCount(0);
     setIsTrue(false);
     setAnswer(false);
     getMovie();

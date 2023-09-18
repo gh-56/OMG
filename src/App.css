@@ -16,4 +16,29 @@
 
 h1 {
   text-align: center;
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 50px;
+}
+.gameDescription {
+  text-align: center;
+}
+
+ol {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.selectLevel {
+  margin: 30px;
+  text-align: center;
+}
+
+select {
+  width: 150px;
+  margin: 15px;
+}
+
+.startButton {
+  width: 512px;
 }
