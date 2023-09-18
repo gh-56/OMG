@@ -25,6 +25,9 @@ function QuizResult(props) {
     setAnswer(false);
     getMovie();
   };
+  const onClickHandler3 = () => {
+    window.location.reload();
+  };
   return (
     <div>
       {props.answer ? (
@@ -36,7 +39,13 @@ function QuizResult(props) {
       ) : (
         <div>
           오답입니다. 정답은 {movies.title}입니다.
+          {gameCount === 0 ? (
+            <div>총 {gameCount} 개 맞추셨습니다.</div>
+          ) : (
+            <div>총 {gameCount - 1} 개 맞추셨습니다.</div>
+          )}
           <button onClick={onClickHandler}>다시 시작하기</button>
+          <button onClick={onClickHandler3}>첫 화면으로 돌아가기</button>
         </div>
       )}
       <img src={img_url} alt='' />

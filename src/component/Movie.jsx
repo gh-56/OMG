@@ -68,9 +68,9 @@ function Movie(props) {
   useEffect(() => {
     count > 0 && setTimeout(() => setCount(count - 1), 1000);
   }, [count]);
-  console.log(count);
-  console.log('props.gc' + props.gc);
-  console.log('gameCount' + gameCount);
+  console.log('타이머 = ' + count);
+  // console.log('props.gc = ' + props.gc);
+  // console.log('게임 횟수 = ' + gameCount);
   return (
     <div>
       <movieContext.Provider
@@ -94,7 +94,7 @@ function Movie(props) {
         ) : (
           <div>
             <ResCompare />
-            {gameCount === Number(props.gc) ? (
+            {gameCount === Number(props.gc) && answer ? (
               <div>
                 <GameScore answer={answer} />
               </div>
