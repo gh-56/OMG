@@ -6,7 +6,7 @@ import QuizResult from './QuizResult';
 import GameScore from './GameScore';
 
 export const movieContext = createContext();
-function Movie() {
+function Movie(props) {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
@@ -56,7 +56,6 @@ function Movie() {
       //duplicatedIdx.push(idx);
       setMovies(response.results[idx]);
       setKeyword(response3.keywords);
-      setGameCount((gameCount) => gameCount + 1);
       setLoading(false);
       break;
     }
@@ -70,6 +69,8 @@ function Movie() {
     count > 0 && setTimeout(() => setCount(count - 1), 1000);
   }, [count]);
   console.log(count);
+  console.log('props.gc' + props.gc);
+  console.log('gameCount' + gameCount);
   return (
     <div>
       <movieContext.Provider
@@ -93,7 +94,7 @@ function Movie() {
         ) : (
           <div>
             <ResCompare />
-            {gameCount === 7 ? (
+            {gameCount === Number(props.gc) ? (
               <div>
                 <GameScore answer={answer} />
               </div>

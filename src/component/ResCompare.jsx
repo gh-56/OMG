@@ -1,17 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { movieContext } from './Movie';
 import './ResCompare.css';
-
 function ResCompare() {
-  const { movies, setIsTrue, setAnswer } = useContext(movieContext);
+  const { movies, setIsTrue, setAnswer, setGameCount } =
+    useContext(movieContext);
   const [inputText, setInputText] = useState('');
-
   const onChangeHandler = (event) => {
     setInputText(event.target.value);
   };
   var title = movies.title;
   const onClickHandler = () => {
     setIsTrue(true);
+    setGameCount((gameCount) => gameCount + 1);
     if (inputText.replace(/(\s*)/g, '') === title.replace(/(\s*)/g, '')) {
       setAnswer(true);
       console.log('정답');
@@ -31,5 +31,4 @@ function ResCompare() {
     </div>
   );
 }
-
 export default ResCompare;
