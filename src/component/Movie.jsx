@@ -8,7 +8,7 @@ function Movie() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(10);
   const [keyword, setKeyword] = useState(0);
   const [gameCount, setGameCount] = useState(0);
   // let duplicatedIdx = [];
@@ -77,6 +77,7 @@ function Movie() {
           getMovie,
           gameCount,
           setGameCount,
+          setCount,
         }}
       >
         {loading ? (
@@ -87,8 +88,17 @@ function Movie() {
               <ResCompare />
             ) : (
               <div>
-                <ResCompare />
-                <Home />
+                <div>
+                  {count === 0 ? (
+                    <ResCompare />
+                  ) : (
+                    <div>
+                      <ResCompare />
+                      {count}
+                      <Home />
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>

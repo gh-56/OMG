@@ -1,8 +1,13 @@
+.ResCompare {
+  text-align: center;
+}
+
 input {
   border: 1px solid black;
   border-radius: 15px;
   padding: 15px;
   margin: 15px;
+  width: 400px;
 }
 
 button {

@@ -6,10 +6,13 @@ function Hint15() {
   return (
     <div>
       {count <= 5 ? (
-        <div id='div'>
+        <div className='Hint15'>
           <h3>두 번째 힌트</h3>
+
           {keyword.map((keywords) => (
-            <div key={keywords.id}>{keywords.name}</div>
+            <p className='keyword' key={keywords.id}>
+              {keywords.name}
+            </p>
           ))}
         </div>
       ) : (

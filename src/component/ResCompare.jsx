@@ -25,7 +25,7 @@ function ResCompare() {
   };
   console.log(inputText);
   return (
-    <div>
+    <div className='ResCompare'>
       <input
         value={inputText}
         onChange={onChangeHandler}
@@ -39,8 +39,7 @@ function ResCompare() {
       ) : (
         ''
       )}
-
-      {movies.title}
+      <div>{movies.title}</div>
     </div>
   );
 }

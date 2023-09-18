@@ -1,6 +1,14 @@
-#div {
+.Hint15 {
   border: 1px solid black;
   border-radius: 10px;
   padding: 0 30px 30px 30px;
   margin: 10px;
+}
+.keyword {
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+  width: 150px;
 }

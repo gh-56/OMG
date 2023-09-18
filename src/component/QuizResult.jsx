@@ -2,12 +2,17 @@ import React, { useContext } from 'react';
 import { movieContext } from './Movie';
 
 function QuizResult(props) {
-  const { movies, posterImg, getMovie, gameCount, setGameCount } =
+  const { movies, posterImg, getMovie, gameCount, setGameCount, setCount } =
     useContext(movieContext);
 
   const img_url = `${posterImg.base_url}${posterImg.poster_sizes[2]}${movies.poster_path}`;
   const onClickHandler = () => {
     setGameCount(0);
+    setCount(10);
+    getMovie();
+  };
+  const onClickHandler2 = () => {
+    setCount(10);
     getMovie();
   };
   return (
@@ -16,7 +21,7 @@ function QuizResult(props) {
         <div>
           정답입니다.
           <div>현재까지 맞은 문제 수: {gameCount}</div>
-          <button onClick={getMovie}>다음 문제</button>
+          <button onClick={onClickHandler2}>다음 문제</button>
         </div>
       ) : (
         <div>
