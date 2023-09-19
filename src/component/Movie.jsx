@@ -16,7 +16,6 @@ function Movie(props) {
   const [answer, setAnswer] = useState(false);
   let timeOutID = null;
 
-  // let duplicatedIdx = [];
   const getMovie = async () => {
     setLoading(true);
     const rand = Math.floor(Math.random() * 10) + 1;
@@ -27,33 +26,17 @@ function Movie(props) {
     while (true) {
       const response = await (await fetch(url)).json();
       const idx = Math.floor(Math.random() * response.results.length);
-      console.log('idx = ' + idx);
-      fetch(url)
-        .then((res) => res.json())
-        .then((json) => console.log(json));
       const response2 = await (await fetch(url_posterPath)).json();
-      fetch(url_posterPath)
-        .then((res) => res.json())
-        .then((json) => console.log(json));
       setPosterImg(response2.images);
       // 키워드
       const url_keywords = `https://api.themoviedb.org/3/movie/${response.results[idx].id}/keywords${api}`;
       const response3 = await (await fetch(url_keywords)).json();
-      fetch(url_keywords)
-        .then((res) => res.json())
-        .then((json) => console.log(json));
       if (
         response.results[idx].overview === '' ||
         response3.keywords.length === 0
       ) {
         continue;
       }
-      // for (let i; duplicatedIdx.length; i++) {
-      //   if (duplicatedIdx[i] === idx) {
-      //     continue;
-      //   }
-      // }
-      //duplicatedIdx.push(idx);
       setMovies(response.results[idx]);
       setKeyword(response3.keywords);
       setLoading(false);
@@ -76,10 +59,6 @@ function Movie(props) {
     clearTimeout(timeOutID); // 주석처리하면 동일한 이슈 발생
     setCount(0);
   };
-
-  console.log('타이머 = ' + count);
-  // console.log('props.gc = ' + props.gc);
-  // console.log('게임 횟수 = ' + gameCount);
   return (
     <div>
       <movieContext.Provider
