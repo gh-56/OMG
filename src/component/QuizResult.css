@@ -1,0 +1,10 @@
+#answer {
+  margin-right: 2em;
+}
+
+#body {
+  display: flex;
+}
+#posterDiv {
+  margin: auto 0 0 auto;
+}

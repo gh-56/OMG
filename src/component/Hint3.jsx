@@ -8,10 +8,10 @@ function Hint3() {
   const img_url = `${posterImg.base_url}${posterImg.poster_sizes[2]}${movies.poster_path}`;
   return (
     <div>
-      {count <= 3 ? (
+      {count <= 5 ? (
         <div id='div'>
           <h3>세 번째 힌트</h3>
-          <img src={img_url} alt='' />
+          <img src={img_url} alt='' id='hint3img' />
         </div>
       ) : (
         ' '

@@ -4,20 +4,19 @@ import ResCompare from './ResCompare';
 import { useState, useEffect, createContext } from 'react';
 import QuizResult from './QuizResult';
 import GameScore from './GameScore';
-
 export const movieContext = createContext();
 function Movie(props) {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState(null);
   const [posterImg, setPosterImg] = useState(null);
-  const [count, setCount] = useState(10);
+  const [count, setCount] = useState(30);
   const [keyword, setKeyword] = useState(0);
   const [gameCount, setGameCount] = useState(0);
   const [isTrue, setIsTrue] = useState(false);
   const [answer, setAnswer] = useState(false);
   let timeOutID = null;
-  // let duplicatedIdx = [];
 
+  // let duplicatedIdx = [];
   const getMovie = async () => {
     setLoading(true);
     const rand = Math.floor(Math.random() * 10) + 1;
@@ -64,9 +63,7 @@ function Movie(props) {
   useEffect(() => {
     getMovie();
   }, []);
-
   // 카운트 다운 구현
-
   useEffect(() => {
     if (count > 0) {
       timeOutID = setTimeout(() => {
@@ -74,6 +71,7 @@ function Movie(props) {
       }, 1000);
     }
   }, [count]);
+
   const clickHandler = () => {
     clearTimeout(timeOutID); // 주석처리하면 동일한 이슈 발생
     setCount(0);
@@ -98,6 +96,7 @@ function Movie(props) {
           setIsTrue,
           answer,
           setAnswer,
+          timeOutID,
           clickHandler,
         }}
       >
@@ -107,25 +106,25 @@ function Movie(props) {
           <div>
             <ResCompare />
             {gameCount === Number(props.gc) && answer ? (
-              <div>
+              <div id='MovieResult'>
                 <GameScore answer={answer} />
               </div>
             ) : (
               <div>
                 <div>
                   {count === 0 ? (
-                    <div>
+                    <div id='MovieResult'>
                       <QuizResult answer={answer} title={movies.title} />
                     </div>
                   ) : (
                     <div>
                       {isTrue ? (
-                        setCount(0) && (
+                        <div id='MovieResult'>
                           <QuizResult answer={answer} title={movies.title} />
-                        )
+                        </div>
                       ) : (
                         <div>
-                          {count}
+                          <div>남은 시간 : {count}초</div>
                           <Home />
                         </div>
                       )}
