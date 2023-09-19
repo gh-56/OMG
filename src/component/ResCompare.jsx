@@ -2,8 +2,15 @@ import React, { useContext, useState } from 'react';
 import { movieContext } from './Movie';
 import './ResCompare.css';
 function ResCompare() {
-  const { movies, setIsTrue, setAnswer, setGameCount, isTrue, clickHandler } =
-    useContext(movieContext);
+  const {
+    movies,
+    setIsTrue,
+    setAnswer,
+    setGameCount,
+    isTrue,
+    clickHandler,
+    count,
+  } = useContext(movieContext);
   const [inputText, setInputText] = useState('');
   const onChangeHandler = (event) => {
     setInputText(event.target.value);
@@ -30,7 +37,7 @@ function ResCompare() {
   };
   return (
     <div>
-      {isTrue ? (
+      {isTrue || count === 0 ? (
         <div>
           <input
             value={inputText}

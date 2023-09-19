@@ -4,8 +4,6 @@ import ResCompare from './ResCompare';
 import { useState, useEffect, createContext } from 'react';
 import QuizResult from './QuizResult';
 import GameScore from './GameScore';
-import './Movie.css';
-
 export const movieContext = createContext();
 function Movie(props) {
   const [loading, setLoading] = useState(true);
@@ -82,7 +80,6 @@ function Movie(props) {
   console.log('타이머 = ' + count);
   // console.log('props.gc = ' + props.gc);
   // console.log('게임 횟수 = ' + gameCount);
-
   return (
     <div>
       <movieContext.Provider

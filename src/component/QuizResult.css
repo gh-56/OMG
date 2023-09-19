@@ -1,9 +1,10 @@
-#posterDiv{
-    /* margin-left: 20%; */
-    /* float: right; */
-    position: relative;
+#answer {
+  margin-right: 2em;
 }
-#answer{
-    position: relative;
-    /* float: left; */
+
+#body {
+  display: flex;
+}
+#posterDiv {
+  margin: auto 0 0 auto;
 }
