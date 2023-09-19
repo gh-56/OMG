@@ -1,5 +1,7 @@
 # OMG (Our Movie Game)
 
+<img src="public\startimg.png"/>
+
 ## 프로젝트 주제
 
 "영화에 대한 정보를 가지고 영화를 맞추는 웹게임" 입니다.
@@ -19,7 +21,14 @@ ssong7446
 
 ## 프로젝트 설명
 
-## STACKS
+- 인기 영화 목록 중 랜덤의 영화가 문제로 화면에 출력됩니다.
+- 난이도를 설정해 맞출 문제 갯수를 정할 수 있습니다.
+- 30초의 시간이 주어지고 첫번째 힌트가 표시됩니다. 20초가 남을 때, 5초가 남을 때 각각 힌트가 하나씩 추가됩니다.
+- 입력한 값에 공백이 있어도 공백을 제거 후 값을 비교합니다.
+- 입력창에 값 입력 후 엔터키를 눌러 제출할 수 있습니다.
+- 정답일 때와 오답일 때, 모든 문제를 맞췄을 때 각각 다른 화면으로 출력됩니다.
+
+## 기술스택
 
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
 <img src="https://img.shields.io/badge/css3-1572B6?style=for-the-badge&logo=html5&logoColor=white">
