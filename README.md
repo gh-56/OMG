@@ -14,7 +14,6 @@
 ## 프로젝트 구성원
 
 <img src="https://img.shields.io/badge/Github-181717?style=flat-square&logo=Github&logoColor=white"/>
-<br>
 <div>gh-56</div>
 <div>song7446</div>
 
