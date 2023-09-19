@@ -1,0 +1,9 @@
+#posterDiv{
+    /* margin-left: 20%; */
+    /* float: right; */
+    position: relative;
+}
+#answer{
+    position: relative;
+    /* float: left; */
+}
