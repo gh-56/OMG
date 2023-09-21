@@ -28,10 +28,10 @@
 
 ## 구현 화면
 
-<img src="capture_img\captrue_시작화면.png"/>
-<img src="capture_img\captrue_첫번째힌트.png"/>
+<img src="capture_img\capture_시작화면.png"/>
+<img src="capture_img\capture_첫번째 힌트.png"/>
 <img src="capture_img\capture_두번째힌트.png"/>
-<img src="capture_img\capture_세번째힌트.png"/>
+<img src="capture_img\capture_세번째힌트.png"/>
 <img src="capture_img\capture_정답일때.png"/>
 <img src="capture_img\captrue_오답일때.png"/>
 <img src="capture_img\capture_모든문제정답.png"/>
