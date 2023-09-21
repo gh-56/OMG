@@ -26,6 +26,16 @@
 - 입력창에 값 입력 후 엔터키를 눌러 제출할 수 있습니다.
 - 정답일 때와 오답일 때, 모든 문제를 맞췄을 때 각각 다른 화면으로 출력됩니다.
 
+## 구현 화면
+
+<img src="capture_img\captrue_시작화면.png"/>
+<img src="capture_img\captrue_첫번째힌트.png"/>
+<img src="capture_img\capture_두번째힌트.png"/>
+<img src="capture_img\capture_세번째힌트.png"/>
+<img src="capture_img\capture_정답일때.png"/>
+<img src="capture_img\captrue_오답일때.png"/>
+<img src="capture_img\capture_모든문제정답.png"/>
+
 ## 기술스택
 
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
